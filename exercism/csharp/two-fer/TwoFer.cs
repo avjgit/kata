@@ -4,6 +4,6 @@
   {
       public static string Name(string input = null)
       {
-          throw new NotImplementedException("You need to implement this function.");
+        return $"One for {input ?? "you"}, one for me.";
       }
   }
