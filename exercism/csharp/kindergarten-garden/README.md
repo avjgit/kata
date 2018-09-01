@@ -1,13 +1,6 @@
-# Kindergarten Garden
+Given a diagram, determine which plants each child in the kindergarten class is responsible for.
 
-Given a diagram, determine which plants each child in the kindergarten class is
-responsible for.
-
-The kindergarten class is learning about growing plants. The teacher
-thought it would be a good idea to give them actual seeds, plant them in
-actual dirt, and grow actual plants.
-
-They've chosen to grow grass, clover, radishes, and violets.
+grass, clover, radishes, and violets.
 
 To this end, the children have put little cups along the window sills, and
 planted one type of plant in each cup, choosing randomly from the available
@@ -58,19 +51,3 @@ Then if asked for Alice's plants, it should provide:
 While asking for Bob's plants would yield:
 
 - Clover, grass, clover, clover
-
-## Running the tests
-
-To run the tests, run the command `dotnet test` from within the exercise directory.
-
-## Further information
-
-For more detailed information about the C# track, including how to get help if
-you're having trouble, please visit the exercism.io [C# language page](http://exercism.io/languages/csharp/resources).
-
-## Source
-
-Random musings during airplane trip. [http://jumpstartlab.com](http://jumpstartlab.com)
-
-## Submitting Incomplete Solutions
-It's possible to submit an incomplete solution so you can see how others have completed the exercise.
