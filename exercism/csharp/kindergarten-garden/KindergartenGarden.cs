@@ -17,26 +17,13 @@ public class KindergartenGarden
     };
 
     // really relying on requirements "promise" that each kid have same amount of flowers
-    private readonly int FLOWERS_COUNT = 2;
-
+    private readonly int PLANTS_COUNT = 2;
     private readonly List<string> plantsRows;
+    public KindergartenGarden(string diagram) => plantsRows = diagram.Split("\n").ToList();
 
-    public KindergartenGarden(string diagram)
-    {
-        plantsRows = diagram.Split("\n").ToList();
-    }
-
-    public IEnumerable<Plant> Plants(string student)
-    {
-        var plants_start = students.IndexOf(student) * FLOWERS_COUNT;
-        var plants = new List<Plant>();
-        foreach (var line in plantsRows)
-        {
-            for (int i = plants_start; i < plants_start + FLOWERS_COUNT; i++)
-            {
-                plants.Add((Plant)line[i]);
-            }
-        }
-        return plants;
-    }
+    public IEnumerable<Plant> Plants(string student) => plantsRows
+        .SelectMany(row => row
+            .Skip(students.IndexOf(student) * PLANTS_COUNT)
+            .Take(PLANTS_COUNT))
+        .Select(x => (Plant) x);
 }
