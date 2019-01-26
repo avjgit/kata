@@ -2,7 +2,16 @@ using System;
 
 public class SpaceAge
 {
-    public long Seconds { get; set; }
+    private long Seconds { get; }
+
+    private const long EARTH_YEAR_SECONDS = 31557600;
+    private const double MERCURY_EARTH_YEARS = 0.2408467;
+    private const double VENUS_EARTH_YEARS = 0.61519726;
+    private const double MARS_EARTH_YEARS = 1.8808158;
+    private const double JUPITER_EARTH_YEARS = 11.862615;
+    private const double SATURN_EARTH_YEARS = 29.447498;
+    private const double URANUS_EARTH_YEARS = 84.016846;
+    private const double NEPTUNE_EARTH_YEARS = 164.79132;
 
     public SpaceAge(long seconds)
     {
@@ -11,41 +20,41 @@ public class SpaceAge
 
     public double OnEarth()
     {
-        return Seconds/31557600;
+        return (double)Seconds / EARTH_YEAR_SECONDS;
     }
 
     public double OnMercury()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return OnEarth() / MERCURY_EARTH_YEARS;
     }
 
     public double OnVenus()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return OnEarth() / VENUS_EARTH_YEARS;
     }
 
     public double OnMars()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return OnEarth() / MARS_EARTH_YEARS;
     }
 
     public double OnJupiter()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return OnEarth() / JUPITER_EARTH_YEARS;
     }
 
     public double OnSaturn()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return OnEarth() / SATURN_EARTH_YEARS;
     }
 
     public double OnUranus()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return OnEarth() / URANUS_EARTH_YEARS;
     }
 
     public double OnNeptune()
     {
-        throw new NotImplementedException("You need to implement this function.");
+        return OnEarth() / NEPTUNE_EARTH_YEARS;
     }
 }
