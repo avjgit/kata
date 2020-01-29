@@ -24,16 +24,5 @@ public class Allergies
 
     public bool IsAllergicTo(Allergen allergen) => ((int)allergen & allergiesMask) > 0;
 
-    public Allergen[] List()
-    {
-        var allergies = new List<Allergen>();
-        foreach (Allergen a in (Allergen[])Enum.GetValues(typeof(Allergen)))
-            if(IsAllergicTo(a)) allergies.Add(a);
-        return allergies.ToArray();
-
-        //IEnumerable<int> x = Enum.GetValues(typeof(Allergen));
-        //x.Where(z => z.is)
-
-        //.ToList<Allergen>().Where(IsAllergicTo).ToArray()
-    }
+    public Allergen[] List() => ((Allergen[])Enum.GetValues(typeof(Allergen))).Where(IsAllergicTo).ToArray();
 }
