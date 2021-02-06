@@ -7,10 +7,19 @@ namespace multithreading
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Let' s check thread:");
-            var t = Thread.CurrentThread;
-            t.Name = "The Thread";
-            Console.WriteLine(t.Name);
+            var t = new Thread(SomeFunction);
+            t.Name = "foreground thread";
+            t.IsBackground = false;
+            t.Start();
+
+            Console.WriteLine("Main thread running");
+        }
+
+        static void SomeFunction()
+        {
+            Console.WriteLine($"{Thread.CurrentThread.Name} started") ;
+            Thread.Sleep(3000);
+            Console.WriteLine($"{Thread.CurrentThread.Name} finished") ;
         }
     }
 }
