@@ -7,31 +7,56 @@ namespace multithreading
 {
     public class RaceConditionExample
     {
-        static public void Run()
+
+        public static void RunRaced()
         {
+            Console.WriteLine("Run raced -----------------");
             var calc = new SomeHeavyCalculator();
             var threads = new Thread[5];
-
             for (int i = 0; i < 5; i++)
             {
-                threads[i] = new Thread(new ThreadStart(calc.Calculate));
+                threads[i] = new Thread(new ThreadStart(calc.CalculateRaced));
                 threads[i].Name = $"thread #{i}";
             }
+            foreach (var t in threads) t.Start();
+        }
 
-            foreach (var t in threads)
+        public static void RunLocked()
+        {
+            Console.WriteLine("Run locked -----------------");
+            var calc = new SomeHeavyCalculator();
+            var threads = new Thread[5];
+            for (int i = 0; i < 5; i++)
             {
-                t.Start();
+                threads[i] = new Thread(new ThreadStart(calc.CalculateLocked));
+                threads[i].Name = $"thread #{i}";
             }
+            foreach (var t in threads) t.Start();
         }
 
         class SomeHeavyCalculator
         {
-            public void Calculate()
+            public object lockObj = new object();
+
+            public void CalculateRaced()
+            {
+                Calculate("Raced");
+            }
+
+            public void CalculateLocked()
+            {
+                lock (lockObj)
+                {
+                    Calculate("Locked");
+                }
+            }
+
+            private void Calculate(string lockedorRaced)
             {
                 for (int i = 0; i < 5; i++)
                 {
                     Thread.Sleep(new Random().Next(5));
-                    Console.WriteLine($"Performing calculation step {i}");
+                    Console.WriteLine($"{lockedorRaced} {Thread.CurrentThread.Name} performing calculation step {i}");
                 }
             }
         }
