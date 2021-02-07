@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace multithreading
 {
-    public class RaceConditionExample
+    public class RaceDemo
     {
 
         public static void RunRaced()

@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace multithreading
 {
-    public class DeadlockExample
+    public class DeadlockDemo
     {
         static object obj1 = new object();
         static object obj2 = new object();
