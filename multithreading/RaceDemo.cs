@@ -11,24 +11,21 @@ namespace multithreading
         public static void RunRaced()
         {
             Console.WriteLine("Run raced -----------------");
-            var calc = new SomeHeavyCalculator();
-            var threads = new Thread[5];
-            for (int i = 0; i < 5; i++)
-            {
-                threads[i] = new Thread(new ThreadStart(calc.CalculateRaced));
-                threads[i].Name = $"thread #{i}";
-            }
-            foreach (var t in threads) t.Start();
+            BuildThreads(new SomeHeavyCalculator().CalculateRaced);
         }
 
         public static void RunLocked()
         {
             Console.WriteLine("Run locked -----------------");
-            var calc = new SomeHeavyCalculator();
+            BuildThreads(new SomeHeavyCalculator().CalculateLocked);
+        }
+
+        public static void BuildThreads(Action calculateLockedOrRaced)
+        {
             var threads = new Thread[5];
             for (int i = 0; i < 5; i++)
             {
-                threads[i] = new Thread(new ThreadStart(calc.CalculateLocked));
+                threads[i] = new Thread(new ThreadStart(calculateLockedOrRaced));
                 threads[i].Name = $"thread #{i}";
             }
             foreach (var t in threads) t.Start();
