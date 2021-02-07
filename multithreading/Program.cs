@@ -10,7 +10,8 @@ namespace multithreading
             //RaceDemo.RunRaced(); // some chaotic unordered execution
             //RaceDemo.RunLocked(); 
             //DeadlockDemo.Run();
-            MutexDemo.Run();
+            //MutexDemo.Run();
+            SemaphoreDemo.Run();
         }
     }
 }
