@@ -8,7 +8,8 @@ namespace multithreading
 
         static void Main(string[] args)
         {
-            RaceConditionExample.Run(); // some chaotic unordered execution
+            //RaceConditionExample.Run(); // some chaotic unordered execution
+            DeadlockExample.Run();
         }
 
     }
